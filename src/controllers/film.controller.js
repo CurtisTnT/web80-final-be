@@ -185,7 +185,7 @@ const filmController = {
 
   getList: async (req, res) => {
     try {
-      const { pageNumber = 1, pageSize = 4 } = req.body;
+      const { pageNumber = 1, pageSize = 4 } = req.query;
 
       const totalItems = await FilmModel.countDocuments();
       const totalPages = Math.ceil(totalItems / pageSize);
@@ -200,7 +200,7 @@ const filmController = {
           hasPrevPage: pageNumber > 1,
           hasNextPage: totalPages > pageNumber,
           totalPages,
-          currentPage: pageNumber,
+          currentPage: Number(pageNumber),
           items: films,
         },
         message: "Get films successfully!",

@@ -1,6 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import { v2 as cloudinary } from "cloudinary";
+import cors from "cors";
 
 import connectDatabase from "./src/database/db.js";
 import RootRoute from "./src/routes/index.js";
@@ -9,6 +10,7 @@ const app = express();
 
 //Middleware
 app.use(express.json());
+app.use(cors());
 
 //Connect database
 connectDatabase();
